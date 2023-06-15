@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function AddItemMenu({todos, setTodos}) {
+export default function AddItemMenu({setTodos}) {
     const [inputValue, setInputValue] = useState('')
 
     function createToDoItem(event) {
@@ -12,8 +12,6 @@ export default function AddItemMenu({todos, setTodos}) {
 
         setInputValue("")
     }
-
-    //console.log(todos)
 
     return(<form onSubmit={createToDoItem} className="new-item-form">
     <div className="form-row">
