@@ -23,6 +23,10 @@
     gap: 1rem;
     text-align: center;
   }
+
+  .text-container {
+    text-align: left;
+  }
   
   .btn {
     background: hsl(200, 100%, 50%, 0.1);
@@ -32,6 +36,7 @@
     border-radius: 0.25em;
     cursor: pointer;
     outline: none;
+
   }
   
   .btn:hover,
