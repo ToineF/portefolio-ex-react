@@ -1,7 +1,7 @@
 import ToDoElement from "./ToDoElement"
 
 
-export default function ToDoList() {
+export default function ToDoList({todos}) {
     // fetch("https://dummyjson.com/todos")
     // .then((res) => res.json())
     // .then((data) => data.todos.forEach(todo => {
@@ -18,8 +18,11 @@ export default function ToDoList() {
     //{todos[1].todo}
     
     return(<ul id="todoContainer" className="list">
-                <ToDoElement text= ""/>
-                <ToDoElement text="Item 2"/>
+                {todos.map(todo => {
+                    return (
+                    <ToDoElement text= {todo.text}/>
+                    )
+                })}
             </ul>
     )
 }

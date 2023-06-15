@@ -1,14 +1,14 @@
 import { useState } from "react"
 
-export default function AddItemMenu() {
+export default function AddItemMenu({todos, setTodos}) {
     const [inputValue, setInputValue] = useState('')
-    const [todos, setTodos] = useState([])
+    //const [todos, setTodos] = useState([])
 
     function createToDoItem(event) {
         event.preventDefault()
         if (inputValue === "") return
         setTodos(currentTodos => {
-          return [ ...currentTodos, {text: inputValue, completed: false, id: crypto.randomUUID()}]
+          return [ {text: inputValue, completed: false, id: crypto.randomUUID()}, ...currentTodos]
         })
 
         setInputValue("")
@@ -22,11 +22,7 @@ export default function AddItemMenu() {
       <input value={inputValue} onChange={(e) => {
         setInputValue(e.target.value)
       }} type="text" id="item"></input>
-      {/* {todos.map(todo => {
-        return (
-          <button className="btn">{todo.text}</button>
-        )
-      })} */}
+      
     </div>
     <button className="btn">Add</button>
   </form>)
