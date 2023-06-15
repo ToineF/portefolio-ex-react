@@ -12,10 +12,12 @@ export default function App2() {
   useEffect(() => {
     fetch("https://dummyjson.com/todos")
     .then((res) => res.json())
-    .then((data) => data.todos.forEach(todo => {
-          setTodos(current => {return [...current, {text: todo.todo, completed: false, id: todo.id}
-        ]})
-    }))
+    .then((data) => {
+      const newTodo = []
+      data.todos.forEach(todo => {
+        newTodo.push({text: todo.todo, completed: false, id: todo.id})
+        setTodos(() => newTodo)
+    })})
 },[])
 
   return (

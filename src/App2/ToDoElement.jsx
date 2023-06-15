@@ -5,6 +5,6 @@ export default function ToDoElement({text, completed}) {
         <input type="checkbox"/>
           {text}
         </label>
-        <button className="btn btn-danger" onClick={console.log("toto")}>Delete</button>
+        <button className="btn btn-danger">Delete</button>
       </li>)
 }
