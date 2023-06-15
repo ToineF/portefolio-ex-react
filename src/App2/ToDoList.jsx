@@ -1,15 +1,15 @@
 import ToDoElement from "./ToDoElement"
 
 
-export default function ToDoList({todos, setTodos}) {
-    fetch("https://dummyjson.com/todos")
-    .then((res) => res.json())
-    .then((data) => data.todos.forEach(todo => {
-        todos.push(todo)
-    }))
-    .then(() => {
-        setTodos(todos, todos.map(todo => JSON.stringify(<ToDoElement key={item.id} text={todo.todo}/>)))
-    })
+export default function ToDoList() {
+    // fetch("https://dummyjson.com/todos")
+    // .then((res) => res.json())
+    // .then((data) => data.todos.forEach(todo => {
+    //     todos.push(todo)
+    // }))
+    // .then(() => {
+    //     setTodos(todos, todos.map(todo => JSON.stringify(<ToDoElement key={item.id} text={todo.todo}/>)))
+    // })
 
     
     // todos.map((todo)=> {
