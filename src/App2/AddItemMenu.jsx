@@ -2,7 +2,6 @@ import { useState } from "react"
 
 export default function AddItemMenu({todos, setTodos}) {
     const [inputValue, setInputValue] = useState('')
-    //const [todos, setTodos] = useState([])
 
     function createToDoItem(event) {
         event.preventDefault()
@@ -14,7 +13,7 @@ export default function AddItemMenu({todos, setTodos}) {
         setInputValue("")
     }
 
-    console.log(todos)
+    //console.log(todos)
 
     return(<form onSubmit={createToDoItem} className="new-item-form">
     <div className="form-row">
