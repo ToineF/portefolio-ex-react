@@ -1,9 +1,9 @@
-export default function ToDoElement() {
+export default function ToDoElement({text}) {
     return (
     <li>
         <label>
           <input type="checkbox"></input>
-          Item 1
+          {text}
         </label>
         <button className="btn btn-danger">Delete</button>
       </li>)

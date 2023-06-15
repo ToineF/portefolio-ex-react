@@ -1,8 +1,8 @@
 import { useState } from "react"
 
-export default function AddItemMenu() {
+export default function AddItemMenu({todos, setTodos}) {
     const [inputValue, setInputValue] = useState('')
-    const [todos, setTodos] = useState([])
+
 
     function createToDoItem(event) {
         event.preventDefault()
