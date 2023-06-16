@@ -1,7 +1,7 @@
-import "../../styles.css"
+import "../styles.css"
 import { useState } from "react"
-import MenuButton from "../../Components/MenuButton"
-import InputForm from "../../Components/App3/InputForm"
+import MenuButton from "../Components/MenuButton"
+import InputForm from "../Components/App3/InputForm"
 
 export default function App3() {
 
@@ -26,7 +26,7 @@ export default function App3() {
       setCelsiusInput((isNaN(e.target.value) || e.target.value === "")?(e.target.value):((e.target.value- 32)/1.8 ))
       setfahrenheitInput(e.target.value)}}/>
       <p>{sentence}</p>
-      <MenuButton name="Menu" link ="/"/>
+      {/* <MenuButton name="Menu" link ="/"/> */}
     </div>
   )
 }

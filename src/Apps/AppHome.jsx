@@ -1,5 +1,5 @@
-import "../../styles.css"
-import MenuButton from "../../Components/MenuButton"
+import "../styles.css"
+import MenuButton from "../Components/MenuButton"
 
 export default function AppHome() {
   return (
