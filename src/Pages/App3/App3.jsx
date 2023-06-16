@@ -1,7 +1,7 @@
-import "../styles.css"
+import "../../styles.css"
 import { useState } from "react"
-import MenuButton from "../MenuButton"
-import InputForm from "./InputForm"
+import MenuButton from "../../Components/MenuButton"
+import InputForm from "../../Components/App3/InputForm"
 
 export default function App3() {
 

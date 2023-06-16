@@ -1,9 +1,9 @@
-import "../styles.css"
+import "../../styles.css"
 import { useState } from "react"
 import { useEffect } from "react"
-import AddItemMenu from "./AddItemMenu"
-import ToDoList from "./ToDoList"
-import MenuButton from "../MenuButton"
+import AddItemMenu from "../../Components/App2/AddItemMenu"
+import ToDoList from "../../Components/App2/ToDoList"
+import MenuButton from "../../Components/MenuButton"
 
 
 export default function App2() {

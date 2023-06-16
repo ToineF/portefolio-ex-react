@@ -1,6 +1,6 @@
-import "../styles.css"
+import "../../styles.css"
 import { useState } from "react"
-import MenuButton from "../MenuButton"
+import MenuButton from "../../Components/MenuButton"
 
 export default function App1() {
   const [number, setNumber] = useState(0)

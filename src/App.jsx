@@ -1,9 +1,9 @@
 import "./styles.css"
 import { Route, Routes } from "react-router-dom"
-import App1 from "./App1/App1"
-import App2 from "./App2/App2"
-import App3 from "./App3/App3"
-import AppHome from "./AppHome"
+import App1 from "./Pages/App1/App1"
+import App2 from "./Pages/App2/App2"
+import App3 from "./Pages/App3/App3"
+import AppHome from "./Pages/AppHome/AppHome"
 
 export default function App() {
   return (
