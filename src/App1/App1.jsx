@@ -16,7 +16,7 @@ export default function App1() {
           setNumber((n)=>n+1)
         }}>+</button>
       </div>
-      <MenuButton name="Menu" link ="../../index.html"/>
+      <MenuButton name="Menu" link ="/"/>
     </div>
   )
 }

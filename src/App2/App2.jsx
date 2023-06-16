@@ -25,7 +25,7 @@ export default function App2() {
       <AddItemMenu todos={todos} setTodos={setTodos}/>
       <h1 className="header0">Todo List</h1>
       <ToDoList todos={todos} setTodos={setTodos}/>
-      <MenuButton name="Menu" link ="../../index.html"/>
+      <MenuButton name="Menu" link ="/"/>
     </div>
   )
 }

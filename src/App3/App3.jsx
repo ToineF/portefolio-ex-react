@@ -26,7 +26,7 @@ export default function App3() {
       setCelsiusInput((isNaN(e.target.value) || e.target.value === "")?(e.target.value):((e.target.value- 32)/1.8 ))
       setfahrenheitInput(e.target.value)}}/>
       <p>{sentence}</p>
-      <MenuButton name="Menu" link ="../../index.html"/>
+      <MenuButton name="Menu" link ="/"/>
     </div>
   )
 }
