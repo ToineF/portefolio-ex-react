@@ -4,6 +4,7 @@ import App1 from "./Apps/App1"
 import App2 from "./Apps/App2"
 import App3 from "./Apps/App3"
 import AppHome from "./Apps/AppHome"
+import AppError from "./Apps/AppError"
 import NavBar from "./Components/NavBar"
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/ex2" element={<App2/>}/>
         <Route path="/ex3" element={<App3/>}/>
       </Route>
+      <Route path="*" element={<AppError/>} />
     </Routes>
     </>
   )

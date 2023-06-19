@@ -3,7 +3,6 @@ import { useState } from "react"
 import { useEffect } from "react"
 import AddItemMenu from "../Components/App2/AddItemMenu"
 import ToDoList from "../Components/App2/ToDoList"
-import MenuButton from "../Components/MenuButton"
 
 
 export default function App2() {
@@ -25,7 +24,6 @@ export default function App2() {
       <AddItemMenu todos={todos} setTodos={setTodos}/>
       <h1 className="header0">Todo List</h1>
       <ToDoList todos={todos} setTodos={setTodos}/>
-      {/* <MenuButton name="Menu" link ="/"/> */}
     </div>
   )
 }
