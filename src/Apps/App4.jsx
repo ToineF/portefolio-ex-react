@@ -16,7 +16,7 @@ useEffect(() => {
       const data = await res.json()
       setBooks(data.data)
       setIsFetching(false)
-    }
+          }
   fetchAPI()
 }, [])
 

@@ -9,6 +9,7 @@ export default function AppHome() {
       <MenuButton name="EX 2 : To Do List" link="/ex2"/>
       <MenuButton name="EX 3 : Celsius Fahrenheit Conversion" link="/ex3"/>
       <MenuButton name="EX 4 : Books List" link="/ex4"/>
+      <MenuButton name="EX 5 : Star Wars Characters" link="/ex5"/>
     </div>
     </>
   )
