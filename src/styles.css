@@ -6,14 +6,15 @@
   body {
     background: #333;
     color: hsl(200, 100%, 90%);
-    /* max-width: 400px; */
     padding: 1rem;
     margin: 0 auto;
-
-    /* margin: 0px;
-    padding: 8px; */
     min-height: 100%;
-    /* width: 100%; */
+  }
+
+  .wrapper {
+    max-width: 400px;
+    padding: 1rem;
+    margin: 0 auto;
   }
   
   .new-item-form {
@@ -162,12 +163,8 @@
   }
 
   .mw-auto {
-    /* min-width: 100vw;
-    min-height: 100vh; 
-    min-width: 95vw;*/
     width: auto;
     min-height: 100vh;
-
   }
 
   .cards-container {

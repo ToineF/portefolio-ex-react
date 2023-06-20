@@ -4,7 +4,7 @@ import NavBar from "../Components/NavBar"
 export default function AppError() {
 
   return (
-    <div className="form-row">
+    <div className="form-row wrapper">
       <h2>Error 404</h2>
       <p>Page not found
         <br></br>

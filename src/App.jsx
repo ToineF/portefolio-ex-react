@@ -17,8 +17,8 @@ export default function App() {
         <Route path="/ex1" element={<App1/>}/>
         <Route path="/ex2" element={<App2/>}/>
         <Route path="/ex3" element={<App3/>}/>
-        <Route path="/ex4" element={<App4/>}/>
       </Route>
+      <Route path="/ex4" element={<App4/>}/>
       <Route path="*" element={<AppError/>} />
     </Routes>
     </>

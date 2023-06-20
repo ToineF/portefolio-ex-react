@@ -17,7 +17,7 @@ export default function App3() {
 
 
   return (
-    <div className="form-row">
+    <>
       <InputForm inputText={"Temperature (Celsius)"} displayValue={celsiusInput} formSubmit={formSubmit} onValueChange={(e) => {
       setCelsiusInput(e.target.value)
       setfahrenheitInput((isNaN(e.target.value) || e.target.value === "")?(e.target.value):(e.target.value*1.8 + 32))}}/>
@@ -25,6 +25,6 @@ export default function App3() {
       setCelsiusInput((isNaN(e.target.value) || e.target.value === "")?(e.target.value):((e.target.value- 32)/1.8 ))
       setfahrenheitInput(e.target.value)}}/>
       <p>{sentence}</p>
-    </div>
+    </>
   )
 }
