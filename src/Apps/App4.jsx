@@ -2,6 +2,7 @@ import "../styles.css"
 import { useEffect, useState } from "react";
 import BookCard from "../Components/App4/BookCard";
 import NavBar from "../Components/NavBar";
+import OrderingButton from "../Components/App4/OrderingButton";
 
 export default function App4() {
   const [books, setBooks] = useState([])
@@ -19,25 +20,16 @@ useEffect(() => {
   fetchAPI()
 }, [])
 
-const changeOrder = (condition) => {
-  let newbooks = [...books]
-  newbooks.sort((a,b) => {
-    if(a.title < b.title) { return -1 * condition; }
-    if(a.title > b.title) { return 1 * condition; }
-    return 0;
-  })
-  setBooks(newbooks)
-  console.log(books)
-}
-
   return (
     <div className="form-row mw-auto">
       <h1 className="font-bold">Book List:</h1>
       <div className="flex wrapper flex-row gap-2">
-        <button className="btn" onClick={() => changeOrder(1)}>
-          A-Z</button>
-        <button className="btn" onClick={() => changeOrder(-1)}>
-          Z-A</button>
+        <OrderingButton name = "A-Z" order={1} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "Z-A" order={-1} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "Plus Ancien" order={2} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "Plus Recent" order={-2} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "Genre" order={3} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "Editeur" order={4} books={books} setBooks={setBooks}/>
       </div>
       <div className="grid cards-container gap-4">
         {(isFetching)?(<div>Fetching Data...</div>):(
