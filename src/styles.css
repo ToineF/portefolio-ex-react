@@ -6,9 +6,14 @@
   body {
     background: #333;
     color: hsl(200, 100%, 90%);
-    max-width: 400px;
+    /* max-width: 400px; */
     padding: 1rem;
     margin: 0 auto;
+
+    /* margin: 0px;
+    padding: 8px; */
+    min-height: 100%;
+    /* width: 100%; */
   }
   
   .new-item-form {
@@ -38,7 +43,7 @@
     outline: none;
 
   }
-  
+
   @keyframes slidein {
     from { transform: scaleX(1); }
     to   { transform: scaleX(1.1); }
@@ -150,4 +155,24 @@
   
   .list li:has(input:checked) label:hover::before {
     background: hsl(200, 100%, 30%);
+  }
+
+  .flex-50 {
+    flex: 0 50%;
+  }
+
+  .mw-auto {
+    /* min-width: 100vw;
+    min-height: 100vh; 
+    min-width: 95vw;*/
+    width: auto;
+    min-height: 100vh;
+
+  }
+
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-flow: row;
+    justify-content: center;
   }
