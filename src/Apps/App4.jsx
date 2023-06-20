@@ -20,16 +20,25 @@ useEffect(() => {
   fetchAPI()
 }, [])
 
+const OrderEnum = {
+  alphabetical: 1,
+  r_alphabetical: -1,
+  date: 2,
+  r_date: -2,
+  genre: 3,
+  editor: 4,
+}
+
   return (
     <div className="form-row mw-auto">
       <h1 className="font-bold">Book List:</h1>
       <div className="flex wrapper flex-row gap-2">
-        <OrderingButton name = "A-Z" order={1} books={books} setBooks={setBooks}/>
-        <OrderingButton name = "Z-A" order={-1} books={books} setBooks={setBooks}/>
-        <OrderingButton name = "Plus Ancien" order={2} books={books} setBooks={setBooks}/>
-        <OrderingButton name = "Plus Recent" order={-2} books={books} setBooks={setBooks}/>
-        <OrderingButton name = "Genre" order={3} books={books} setBooks={setBooks}/>
-        <OrderingButton name = "Editeur" order={4} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "A-Z" order={OrderEnum.alphabetical} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "Z-A" order={OrderEnum.r_alphabetical} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "Plus Ancien" order={OrderEnum.date} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "Plus Recent" order={OrderEnum.r_date} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "Genre" order={OrderEnum.genre} books={books} setBooks={setBooks}/>
+        <OrderingButton name = "Editeur" order={OrderEnum.editor} books={books} setBooks={setBooks}/>
       </div>
       <div className="grid cards-container gap-4">
         {(isFetching)?(<div>Fetching Data...</div>):(
