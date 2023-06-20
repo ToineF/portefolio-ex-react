@@ -39,9 +39,16 @@
 
   }
   
+  @keyframes slidein {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(1.1); }
+  }
+  
   .btn:hover,
   .btn:focus-visible {
     background: hsl(200, 100%, 50%, 0.2);
+    animation: linear 0.02s 1.0 alternate slidein;
+    transform: scaleX(1.1)
   }
   
   .btn.btn-danger {
