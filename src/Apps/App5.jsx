@@ -12,16 +12,16 @@ export default function App5() {
 
 useEffect(() => {
     async function fetchAPI() {
+      
       setIsFetching(true)
       const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
       const data = await res.json()
-      setPeople(data.results)
-
-      // THIS GETS THE ID OF THE 1ST POKEMON
-      // const coords = data.results[0].url.split('/')
-      // const id = coords[coords.length-2]
-
-      console.log(coords, id)
+      const objects = await (data.results)
+      const urls = await Promise.all(objects.map(url =>  
+        fetch(url.url)
+        .then(res => res.json())
+        ))
+      setPeople(urls)
       setIsFetching(false)
           }
   fetchAPI()
