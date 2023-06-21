@@ -1,12 +1,11 @@
 import "../styles.css"
 import { useEffect, useState } from "react";
-import BookCard from "../Components/App4/BookCard";
 import NavBar from "../Components/NavBar";
-import OrderingPeople from "../Components/App5/OrderingPeople";
-import PeopleCard from "../Components/App5/PeopleCards";
+import OrderingPokemons from "../Components/App5/OrderingPokemons";
+import PokemonCard from "../Components/App5/PokemonCard";
 
 export default function App5() {
-  const [people, setPeople] = useState([])
+  const [pokemons, setPokemons] = useState([])
   const [isFetching, setIsFetching] = useState(true)
 
 
@@ -14,42 +13,44 @@ useEffect(() => {
     async function fetchAPI() {
       
       setIsFetching(true)
-      const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
+      const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=100")
       const data = await res.json()
       const objects = await (data.results)
       const urls = await Promise.all(objects.map(url =>  
         fetch(url.url)
         .then(res => res.json())
         ))
-      setPeople(urls)
+      setPokemons(urls)
       setIsFetching(false)
           }
   fetchAPI()
 }, [])
 
 const OrderEnum = {
+  id: 0,
   alphabetical: 1,
   r_alphabetical: -1,
-  date: 2,
-  r_date: -2,
-  genre: 3,
-  editor: 4,
+  height: 2,
+  r_height: -2,
+  weight: 3,
+  r_weight: -3,
 }
 
   return (
     <div className="form-row mw-auto">
-      <h1 className="font-bold">Star Wars Characters:</h1>
-      <div className="flex wrapper flex-row gap-2">
-        <OrderingPeople name = "A-Z" order={OrderEnum.alphabetical} people={people} setPeople={setPeople}/>
-        <OrderingPeople name = "Z-A" order={OrderEnum.r_alphabetical} people={people} setPeople={setPeople}/>
-        <OrderingPeople name = "Plus Ancien" order={OrderEnum.date} people={people} setPeople={setPeople}/>
-        <OrderingPeople name = "Plus Recent" order={OrderEnum.r_date} people={people} setPeople={setPeople}/>
-        <OrderingPeople name = "Genre" order={OrderEnum.genre} people={people} setPeople={setPeople}/>
-        <OrderingPeople name = "Editeur" order={OrderEnum.editor} people={people} setPeople={setPeople}/>
+      <h1 className="font-bold">Pokemons:</h1>
+      <div className="flex flex-row justify-center flex-wrap gap-2">
+        <OrderingPokemons name = "Pokedex" order={OrderEnum.id} pokemons={pokemons} setPokemons={setPokemons}/>
+        <OrderingPokemons name = "A-Z" order={OrderEnum.alphabetical} pokemons={pokemons} setPokemons={setPokemons}/>
+        <OrderingPokemons name = "Z-A" order={OrderEnum.r_alphabetical} pokemons={pokemons} setPokemons={setPokemons}/>
+        <OrderingPokemons name = "Height -" order={OrderEnum.height} pokemons={pokemons} setPokemons={setPokemons}/>
+        <OrderingPokemons name = "Height +" order={OrderEnum.r_height} pokemons={pokemons} setPokemons={setPokemons}/>
+        <OrderingPokemons name = "Weight -" order={OrderEnum.weight} pokemons={pokemons} setPokemons={setPokemons}/>
+        <OrderingPokemons name = "Weight +" order={OrderEnum.r_weight} pokemons={pokemons} setPokemons={setPokemons}/>
       </div>
-      <div className="grid cards-container gap-4">
+      <div className="cards-pokemon-container gap-4 ">
         {(isFetching)?(<div>Fetching Data...</div>):(
-          people.map(person => <PeopleCard people={person}></PeopleCard>
+          pokemons.map(pokemon => <PokemonCard prop={pokemon}></PokemonCard>
           ))}
       </div>
       <NavBar/>
