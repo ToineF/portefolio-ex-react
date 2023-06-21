@@ -13,7 +13,7 @@ useEffect(() => {
     async function fetchAPI() {
       
       setIsFetching(true)
-      const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=100")
+      const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1010&offset=0")
       const data = await res.json()
       const objects = await (data.results)
       const urls = await Promise.all(objects.map(url =>  
@@ -49,7 +49,9 @@ const OrderEnum = {
         <OrderingPokemons name = "Weight +" order={OrderEnum.r_weight} pokemons={pokemons} setPokemons={setPokemons}/>
       </div>
       <div className="cards-pokemon-container gap-4 ">
-        {(isFetching)?(<div>Fetching Data...</div>):(
+        {(isFetching)?(<div className="flex justify-center gap-2">
+          <img src="/src/Images/circle.webp" className="w-6"></img>
+          Fetching Data...</div>):(
           pokemons.map(pokemon => <PokemonCard prop={pokemon}></PokemonCard>
           ))}
       </div>

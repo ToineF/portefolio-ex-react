@@ -20,6 +20,6 @@ export default function OrderingPokemons({name, order, pokemons, setPokemons}) {
           setPokemons(newPokemons)
       }
 
-    return(<button className="btn" onClick={() => changeOrder(order)}>
+    return(<button className="pkmn-btn" onClick={() => changeOrder(order)}>
     {name}</button>)
 }

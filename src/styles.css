@@ -43,13 +43,12 @@
     cursor: pointer;
     outline: none;
 
-  }
+  }  
 
   @keyframes slidein {
     from { transform: scaleX(1); }
     to   { transform: scaleX(1.1); }
   }
-  
   .btn:hover,
   .btn:focus-visible {
     background: hsl(200, 100%, 50%, 0.2);
@@ -66,6 +65,23 @@
   .btn.btn-danger:hover,
   .btn.btn-danger:focus-visible {
     background: hsl(0, 100%, 40%, 0.2);
+  }
+
+    
+  .pkmn-btn {
+    background: rgb(255, 62, 62);
+    border: 3px solid hsl(0, 100%, 89%);
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .pkmn-btn:hover,
+  .pkmn-btn:focus-visible {
+    background: rgb(190, 26, 26);
+    animation: linear 0.02s 1.0 alternate slidein;
+    transform: scaleX(1.1)
   }
   
   .new-item-form input {
