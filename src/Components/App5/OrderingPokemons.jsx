@@ -1,4 +1,4 @@
-export default function OrderingPokemons({name, order, pokemons, setPokemons}) {
+export default function OrderingPokemons({name, order, pokemons, number, setPokemons, setCurrentPokemons, setPage}) {
     const changeOrder = (condition) => {
         let newPokemons = [...pokemons]
         newPokemons.sort((a,b) => {
@@ -18,6 +18,8 @@ export default function OrderingPokemons({name, order, pokemons, setPokemons}) {
             return 0;
           })
           setPokemons(newPokemons)
+          setCurrentPokemons(newPokemons.slice(0,number))
+          setPage(0)
       }
 
     return(<button className="pkmn-btn" onClick={() => changeOrder(order)}>
