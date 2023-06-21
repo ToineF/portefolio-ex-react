@@ -56,7 +56,7 @@ const OrderEnum = {
       </div>
       <div className="cards-pokemon-container gap-4 ">
         {(isFetching)?(<div className="flex justify-center gap-2">
-          <img src={"/src/Images/circle.webp" || "https://i.giphy.com/media/FgH5xSNjGHZsiYPWAX/giphy_s.gif"} className="w-6"></img>
+          <img src={"https://i.giphy.com/media/FgH5xSNjGHZsiYPWAX/giphy_s.gif"} className="w-6"></img>
           Fetching Data...</div>):(
           currentPokemons.map(pokemon => <PokemonCard prop={pokemon}></PokemonCard>
           ))}
