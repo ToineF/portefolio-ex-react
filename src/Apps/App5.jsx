@@ -4,6 +4,7 @@ import NavBar from "../Components/NavBar";
 import OrderingPokemons from "../Components/App5/OrderingPokemons";
 import PokemonPageButton from "../Components/App5/PokemonPageButton";
 import PokemonCard from "../Components/App5/PokemonCard";
+import { useQuery } from "react-query";
 
 
 export default function App5() {
@@ -13,24 +14,26 @@ export default function App5() {
   const number = 36
   const [page, setPage] = useState(0)
 
-useEffect(() => {
-    async function fetchAPI() {
-      
-      setIsFetching(true)
-      const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1010&offset=0`)
-      const data = await res.json()
-      const objects = await (data.results)
-      const urls = await Promise.all(objects.map(url =>  
-        fetch(url.url)
-        .then(res => res.json())
-        ))
-        setPokemons(urls)
-        setCurrentPokemons(urls.slice(0,number))
-        console.log(pokemons.length)
-        setIsFetching(false)
-          }
-  fetchAPI()
-}, [])
+async function fetchPokemons() {
+  setIsFetching(true)
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1010&offset=0`)
+  const data = await res.json()
+  const objects = await (data.results)
+  const urls = await Promise.all(objects.map(url =>  
+    fetch(url.url)
+    .then(res => res.json())
+  ))
+  setPokemons(urls)
+  setCurrentPokemons(urls.slice(0,number))
+  console.log(pokemons.length)
+  setIsFetching(false)
+}
+
+const {status} = useQuery("pokemons", fetchPokemons);
+
+if (status === "error") {
+  window.location.href = "/error";
+}
 
 const OrderEnum = {
   id: 0,

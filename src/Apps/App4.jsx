@@ -3,22 +3,25 @@ import { useEffect, useState } from "react";
 import BookCard from "../Components/App4/BookCard";
 import NavBar from "../Components/NavBar";
 import OrderingButton from "../Components/App4/OrderingButton";
+import { useQuery } from "react-query";
 
 export default function App4() {
   const [books, setBooks] = useState([])
   const [isFetching, setIsFetching] = useState(true)
 
+async function fetchAPI() {
+  setIsFetching(true)
+  const res = await fetch("https://fakerapi.it/api/v1/books?_quantity=9")
+  const data = await res.json()
+  setBooks(data.data)
+  setIsFetching(false)
+      }
 
-useEffect(() => {
-    async function fetchAPI() {
-      setIsFetching(true)
-      const res = await fetch("https://fakerapi.it/api/v1/books?_quantity=9")
-      const data = await res.json()
-      setBooks(data.data)
-      setIsFetching(false)
-          }
-  fetchAPI()
-}, [])
+const {status} = useQuery("books", fetchAPI);
+
+if (status === "error") {
+  window.location.href = "/error";
+}
 
 const OrderEnum = {
   alphabetical: 1,
