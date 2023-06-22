@@ -9,6 +9,8 @@ import AppHome from "./Apps/AppHome"
 import AppError from "./Apps/AppError"
 import NavBar from "./Components/NavBar"
 
+const queryClient = new queryClient();
+
 export default function App() {
   return (
     <>

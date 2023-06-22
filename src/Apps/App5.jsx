@@ -5,6 +5,7 @@ import OrderingPokemons from "../Components/App5/OrderingPokemons";
 import PokemonPageButton from "../Components/App5/PokemonPageButton";
 import PokemonCard from "../Components/App5/PokemonCard";
 
+
 export default function App5() {
   const [pokemons, setPokemons] = useState([])
   const [currentPokemons, setCurrentPokemons] = useState([])
@@ -56,7 +57,10 @@ const OrderEnum = {
       </div>
       <div className="cards-pokemon-container gap-4 ">
         {(isFetching)?(<div className="flex justify-center gap-2">
-          <img src={"https://i.giphy.com/media/FgH5xSNjGHZsiYPWAX/giphy_s.gif"} className="w-6"></img>
+          <picture>
+            <source srcset="https://i.giphy.com/media/FgH5xSNjGHZsiYPWAX/giphy_s.gif" className="w-6"/>
+            <img src="/src/Images/circle.webp" className="w-6"/>
+          </picture>
           Fetching Data...</div>):(
           currentPokemons.map(pokemon => <PokemonCard prop={pokemon}></PokemonCard>
           ))}
