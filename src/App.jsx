@@ -9,6 +9,7 @@ import AppHome from "./Apps/AppHome"
 import AppError from "./Apps/AppError"
 import NavBar from "./Components/NavBar"
 import { QueryClient, QueryClientProvider } from "react-query"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools/build/lib/devtools"
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/ex5" element={<App5/>}/>
         <Route path="*" element={<AppError/>} />
       </Routes>
+      <ReactQueryDevtools/>
     </QueryClientProvider>
     </>
   )
