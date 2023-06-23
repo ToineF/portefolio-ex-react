@@ -13,6 +13,7 @@ export default function App5() {
   const [isFetching, setIsFetching] = useState(true)
   const number = 36
   const [page, setPage] = useState(0)
+  const [filter, setFilter] = useState("")
 
 async function fetchPokemons() {
   setIsFetching(true)
@@ -35,6 +36,12 @@ if (status === "error") {
   window.location.href = "/error";
 }
 
+function UpdateCurrentPokemon(p) {
+  const newPokemons = pokemons.filter(pokemon => pokemon.name.includes(filter)).slice(p*number,(p+1)*number)
+  setCurrentPokemons(newPokemons)
+  setPage(p)
+}
+
 const OrderEnum = {
   id: 0,
   alphabetical: 1,
@@ -48,15 +55,22 @@ const OrderEnum = {
   return (
     <div className="form-row mw-auto">
       <h1 className="font-bold">Pokemons:</h1>
-      <p>{(isFetching)?(''):(currentPokemons.length + " Pokémons")}</p>
+      <p>{(isFetching)?(''):(pokemons.length + " Pokémons")}</p>
       <div className="flex flex-row justify-center flex-wrap gap-2">
-        <OrderingPokemons name = "Pokedex" order={OrderEnum.id} pokemons={pokemons} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
-        <OrderingPokemons name = "A-Z" order={OrderEnum.alphabetical} pokemons={pokemons} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
-        <OrderingPokemons name = "Z-A" order={OrderEnum.r_alphabetical} pokemons={pokemons} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
-        <OrderingPokemons name = "Height -" order={OrderEnum.height} pokemons={pokemons} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
-        <OrderingPokemons name = "Height +" order={OrderEnum.r_height} pokemons={pokemons} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
-        <OrderingPokemons name = "Weight -" order={OrderEnum.weight} pokemons={pokemons} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
-        <OrderingPokemons name = "Weight +" order={OrderEnum.r_weight} pokemons={pokemons} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
+        <OrderingPokemons name = "Pokedex" order={OrderEnum.id} pokemons={pokemons.filter(pokemon => pokemon.name.includes(filter))} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
+        <OrderingPokemons name = "A-Z" order={OrderEnum.alphabetical} pokemons={pokemons.filter(pokemon => pokemon.name.includes(filter))} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
+        <OrderingPokemons name = "Z-A" order={OrderEnum.r_alphabetical} pokemons={pokemons.filter(pokemon => pokemon.name.includes(filter))} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
+        <OrderingPokemons name = "Height -" order={OrderEnum.height} pokemons={pokemons.filter(pokemon => pokemon.name.includes(filter))} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
+        <OrderingPokemons name = "Height +" order={OrderEnum.r_height} pokemons={pokemons.filter(pokemon => pokemon.name.includes(filter))} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
+        <OrderingPokemons name = "Weight -" order={OrderEnum.weight} pokemons={pokemons.filter(pokemon => pokemon.name.includes(filter))} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
+        <OrderingPokemons name = "Weight +" order={OrderEnum.r_weight} pokemons={pokemons.filter(pokemon => pokemon.name.includes(filter))} number={number} setPokemons={setPokemons} setCurrentPokemons={setCurrentPokemons} setPage={setPage}/>
+        <div className="new-item-form">
+            <input type="text" onChange={(e) => {setFilter(e.target.value)
+            const p = 0
+            const newPokemons = pokemons.filter(pokemon => pokemon.name.includes(e.target.value)).slice(p*number,(p+1)*number)
+            setCurrentPokemons(newPokemons)
+            setPage(p)}}/>
+        </div>
       </div>
       <div className="cards-pokemon-container gap-4 ">
         {(isFetching)?(<div className="flex justify-center gap-2">
@@ -65,22 +79,24 @@ const OrderEnum = {
             <img src="/src/Images/circle.webp" className="w-6"/>
           </picture>
           Fetching Data...</div>):(
-          currentPokemons.map(pokemon => <PokemonCard prop={pokemon}></PokemonCard>
+            currentPokemons.filter(pokemon => pokemon.name.includes(filter)).map(pokemon => <PokemonCard prop={pokemon}></PokemonCard>
           ))}
       </div>
       <div className="flex flex-row justify-center flex-wrap gap-2">
       {(isFetching)?(""):(<>
-        {(page > 0)?(<PokemonPageButton page={0} number={number} setCurrentPokemons={setCurrentPokemons} pokemons={pokemons} setPage={setPage}/>):(<div className="btn">{page+1}</div>)}
+        {(page > 0)?(<PokemonPageButton page={0} UpdateCurrentPokemon={UpdateCurrentPokemon}/>):(<div className="btn">{page+1}</div>)}
         {(page > 5)?("..."):("")}
-        {(page > 3)?(<PokemonPageButton page={page-3} number={number} setCurrentPokemons={setCurrentPokemons} pokemons={pokemons} setPage={setPage}/>):("")}
-        {(page > 2)?(<PokemonPageButton page={page-2} number={number} setCurrentPokemons={setCurrentPokemons} pokemons={pokemons} setPage={setPage}/>):("")}
-        {(page > 1)?(<PokemonPageButton page={page-1} number={number} setCurrentPokemons={setCurrentPokemons} pokemons={pokemons} setPage={setPage}/>):("")}
-        {(page >0 && page < Math.floor(pokemons.length/number))?(<div className="btn">{page+1}</div>):("")}
-        {(page < Math.floor(pokemons.length/number)-1)?(<PokemonPageButton page={page+1} number={number} setCurrentPokemons={setCurrentPokemons} pokemons={pokemons} setPage={setPage}/>):("")}
-        {(page < Math.floor(pokemons.length/number)-2)?(<PokemonPageButton page={page+2} number={number} setCurrentPokemons={setCurrentPokemons} pokemons={pokemons} setPage={setPage}/>):("")}
-        {(page < Math.floor(pokemons.length/number)-3)?(<PokemonPageButton page={page+3} number={number} setCurrentPokemons={setCurrentPokemons} pokemons={pokemons} setPage={setPage}/>):("")}
-        {(page < Math.floor(pokemons.length/number)-5)?("..."):("")}
-        {(page < Math.floor(pokemons.length/number))?(<PokemonPageButton page={Math.floor(pokemons.length/number)} number={number} setCurrentPokemons={setCurrentPokemons} pokemons={pokemons} setPage={setPage}/>):(<div className="btn">{page+1}</div>)}
+        {(page > 3)?(<PokemonPageButton page={page-3} UpdateCurrentPokemon={UpdateCurrentPokemon}/>):("")}
+        {(page > 2)?(<PokemonPageButton page={page-2} UpdateCurrentPokemon={UpdateCurrentPokemon}/>):("")}
+        {(page > 1)?(<PokemonPageButton page={page-1} UpdateCurrentPokemon={UpdateCurrentPokemon}/>):("")}
+        {(page >0 && page < Math.floor(pokemons.filter(pokemon => pokemon.name.includes(filter)).length/number))?(<div className="btn">{page+1}</div>):("")}
+        {(page < Math.floor(pokemons.filter(pokemon => pokemon.name.includes(filter)).length/number)-1)?(<PokemonPageButton page={page+1} UpdateCurrentPokemon={UpdateCurrentPokemon}/>):("")}
+        {(page < Math.floor(pokemons.filter(pokemon => pokemon.name.includes(filter)).length/number)-2)?(<PokemonPageButton page={page+2} UpdateCurrentPokemon={UpdateCurrentPokemon}/>):("")}
+        {(page < Math.floor(pokemons.filter(pokemon => pokemon.name.includes(filter)).length/number)-3)?(<PokemonPageButton page={page+3} UpdateCurrentPokemon={UpdateCurrentPokemon}/>):("")}
+        {(page < Math.floor(pokemons.filter(pokemon => pokemon.name.includes(filter)).length/number)-5)?("..."):("")}
+        {(pokemons.filter(pokemon => pokemon.name.includes(filter)).length/number > 1)?
+        (page < Math.floor(pokemons.filter(pokemon => pokemon.name.includes(filter)).length/number))?(<PokemonPageButton page={Math.floor(pokemons.filter(pokemon => pokemon.name.includes(filter)).length/number)} UpdateCurrentPokemon={UpdateCurrentPokemon}/>):(<div className="btn">{page+1}</div>)
+        :('')}
         </>)}
       </div>
       <NavBar/>

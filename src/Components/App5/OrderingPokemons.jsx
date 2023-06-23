@@ -17,7 +17,6 @@ export default function OrderingPokemons({name, order, pokemons, number, setPoke
             }
             return 0;
           })
-          setPokemons(newPokemons)
           setCurrentPokemons(newPokemons.slice(0,number))
           setPage(0)
       }
